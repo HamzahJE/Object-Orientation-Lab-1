@@ -359,6 +359,7 @@ const shippingInfo = {
 // Print helensInfo to see what it looks like, there should be no repeating properties.
 
 
+
 // ////////////////////////// PROBLEM 16 ////////////////////////////
 
 /*
@@ -373,13 +374,28 @@ const shippingInfo = {
 
 // Code Here
 
-
+class vehicle{
+  constructor(capacity,color,mileage){
+    this.capacity=capacity,
+    this.color=color,
+    this.mileage=+mileage
+  }
+  move(miles){
+    this.mileage=miles+this.mileage
+  }
+  consoleing(){
+    console.log(`your car has ${this.mileage} miles has a beautiful ${this.color} color and holds ${this.capacity} person(s).`)
+    
+  }
+}
 /*
   Create a vehicle using your new class and save it to a variable called myFirstVehicle
 */
 
 // Code Here
-
+let myFirstVehicle= new vehicle(5,`Black`,`20000`)
+myFirstVehicle.move(33)
+myFirstVehicle.consoleing()
 
 /*
   Now we'll create a class that's based off of the vehicle class.
@@ -390,17 +406,30 @@ const shippingInfo = {
 */
 
 // Code Here
-
+class Motorcycle extends vehicle{
+  constructor(capacity,color,mileage,make,isCool){
+    super(capacity,color,mileage)
+    this.make=make,
+    this.isCool=true
+  }
+ displayMotor(){
+   console.log(`your Motorcycle has ${this.mileage} miles has a beautiful ${this.color} color and holds ${this.capacity} person(s) is made by ${this.make} `)
+   if(this.isCool===true){
+    console.log(`and your motorcycles is cool`)
+   }
+ }
+}
 /*
   Create a Motorcycle using your new class and save it to a variable called myFirstMotorcycle
 */
 
 // Code Here
-
+let myFirstMotorcycle= new Motorcycle(1,"red",2000,`Suzuki`)
 /*
   Call the move function on myFirstMotorcycle (don't forget the parameter)
 */
-
+myFirstMotorcycle.displayMotor()
+console.log(myFirstMotorcycle)
 /*
   Let's make another class based off of Vehicle.
 
@@ -418,29 +447,48 @@ const shippingInfo = {
 */
 
 // Code Here
-
-
+ class boat extends vehicle{
+   constructor(capacity,color,mileage,name,type,isSeaworthy){
+     super(capacity,color,mileage)
+     this.name=name,
+     this.type=type,
+     this.isSeaworthy=isSeaworthy
+   }
+   checkSeaworthiness(){
+      if(this.isSeaworthy===true){
+        console.log(`The ${this.color} ${this.type} ${this.name} is seaworthy!`)
+      }else{
+        console.log(`You need to get your ${this.type} in shape!`)
+      }
+    }
+    performMaintance(){
+      this.isSeaworthy=true
+      console.log(`Service has been performed: your Boat is now Seaworthy`)
+    }
+ }
 /*
   Create a new boat using your class. You can choose whatever values you like for all the
   properties except isSeaworthy -- make that one false. Call your variable myFirstBoat.
 */
 
 // Code Here
-
+let myFirstBoat=new boat(2,`Red`,`500`,`Lightning`,`Ski Boat`,false)
 /*
   Call the checkSeaworthiness method on your new boat
 */
-
 // Code Here
+myFirstBoat.checkSeaworthiness()
 
 /*
   Now run the performMaintenance method on your boat
 */
 
 // Code Here
+myFirstBoat.performMaintance()
 
 /*
   Check the seaworthiness once more (you should be ready for the water!)
 */
 
 // Code Here
+myFirstBoat.checkSeaworthiness()
